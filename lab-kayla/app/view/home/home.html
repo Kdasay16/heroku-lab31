@@ -1,0 +1,23 @@
+<section class="home-content">
+  <h2>Welcome Home!</h2>
+  <img ng-src="https://s-media-cache-ak0.pinimg.com/originals/0b/10/79/0b10797ea0d0ac04a90a211baf9f65ec.jpg">
+
+    <div class="gallery-list">
+      <h3>Your Galleries</h3>
+      <select
+        name="gallery selection"
+        ng-options="item as item.name for item in homeCtrl.galleries track by item._id"
+        ng-model="homeCtrl.currentGallery">
+      </select>
+    </div>
+
+  <div class="create-gallery">
+    <create-gallery></create-gallery>
+  </div>
+
+  <div>
+     <gallery-item ng-repeat="item in homeCtrl.galleries" gallery="item"></gallery-item>
+  </div>
+
+  <thumbnail-container ng-if="homeCtrl.currentGallery" gallery="homeCtrl.currentGallery"></thumbnail-container>
+</section>
