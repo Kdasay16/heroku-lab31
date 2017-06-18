@@ -22,7 +22,8 @@ module.exports = [
             Authorization: `Bearer ${token}`
           }
         }
-        return $http.post(`${__API_URL__}/api/gallery`, gallery, config)// eslint-disable-line
+        return $http.post(`${__API_URL__}/api/gallery`, gallery, config)//eslint-disable-line
+
       })
       .then(res => {
         $log.log('gallery created')
@@ -53,9 +54,10 @@ module.exports = [
       })
       .then(res => {
         $log.log('gallery deleted')
-        service.galleries.filter((ele, idx) => {
+        service.galleries.forEach((ele, idx) => {
           if(ele._id === galleryId) service.galleries.splice(idx, 1);
         })
+        // $rootScope.$emit('refreshGalleries')
         return res.status
       })
         .catch(err => {
@@ -80,7 +82,7 @@ module.exports = [
       .then(res => {
         $log.log('galleries retrieved')
         service.galleries = res.data
-        return res.data
+        return service.galleries
       })
       .catch(err => {
         $log.error(err.message)
@@ -104,8 +106,8 @@ module.exports = [
         return $http.put(url, gallery, config)
       })
       .then(res => {
-        service.galleries.forEach((ele, idx) => {
-          if(ele._id === res.data._id) service.galleries[idx] = res.data
+        service.galleries.filter((ele, idx) => {
+          if(ele._id === galleryId) service.galleries[idx] = res.data
         })
         return res.data
       })
