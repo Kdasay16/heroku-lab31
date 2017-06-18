@@ -22,12 +22,15 @@ module.exports = [
       this.galleries = []
 
       this.fetchGalleries = () => {
+        debugger
         return galleryService.fetchGalleries()
         .then(galleries => {
           this.galleries = galleries
-          this.currentGallery = this.galleries[0]
-        })
-        .catch(err => $log.error(err))
+          this.currentGallery = galleries[0]
+          console.log(galleries, 'galleries');
+        },
+        err => $log.error(err)
+        )
       }
 
       $rootScope.$on('locationChangeSuccess', this.fetchGalleries)
@@ -40,7 +43,7 @@ module.exports = [
       //     }
       //   }
       // })
-      this.fetchGalleries()
+      return this.fetchGalleries()
     }
   }
 ]
