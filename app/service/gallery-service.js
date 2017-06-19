@@ -57,7 +57,7 @@ module.exports = [
         service.galleries.forEach((ele, idx) => {
           if(ele._id === galleryId) service.galleries.splice(idx, 1);
         })
-        // $rootScope.$emit('refreshGalleries')
+        $rootScope.$emit('refreshGalleries')// eslint-disable-line
         return res.status
       })
         .catch(err => {
