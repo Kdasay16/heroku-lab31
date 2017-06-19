@@ -20,6 +20,12 @@ module.exports = function(config) {
       'app/entry.js': ['webpack'],
       'test/**/*-test.js': ['webpack']
     },
+    customLaunchers: {
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
     reporters: ['mocha'],
     port: 9876,
     colors: true,

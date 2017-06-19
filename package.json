@@ -7,7 +7,9 @@
     "build": "webpack",
     "build-watch": "webpack-dev-server --inline --hot",
     "test": "karma start --single-run",
-    "test-watch": "karma start --auto-watch"
+    "test-watch": "karma start --auto-watch",
+    "start": "node server.js",
+    "heroku-postbuild": "webpack -p --progress"
   },
   "dependencies": {
     "@uirouter/angularjs": "^1.0.3",
@@ -22,6 +24,7 @@
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.28.4",
     "dotenv": "^4.0.0",
+    "express": "^4.15.3",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.2",
     "html-loader": "^0.4.5",
@@ -49,5 +52,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": "4.4.7"
+  }
 }
