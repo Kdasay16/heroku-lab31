@@ -9,6 +9,7 @@ module.exports = function(config) {
     basePath: '',
     frameworks: ['mocha'],
     files: [
+      'node_modules/babel-polyfill/dist/polyfill.js',
       'node_modules/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'app/entry.js',
